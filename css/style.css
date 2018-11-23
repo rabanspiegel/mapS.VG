@@ -3,6 +3,10 @@
 	background-color: #f2f2f2;
 }
 
+#world {
+    fill: red ;
+}
+
 .markuraban{
 	position: relative;
     width:  100px;
