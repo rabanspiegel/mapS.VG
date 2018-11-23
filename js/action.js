@@ -7,6 +7,7 @@ document.getElementById("footer-text").innerHTML = innerHTML;
 // Dict with coordinates for continents
 
 var continentCoordinates = {
+	"World": "0 0 1009 665",
 	"Europe": "387.104 175.249 229.130 207.369",
 	"Africa": "403.775 350.463 233.306 261.321",
 	"SouthAmerica": "167.773 427.982 233.421 237.499",
@@ -15,7 +16,15 @@ var continentCoordinates = {
 	"Australia": "791.775 431.591 212.278 214.788"
 };
 
+
 $(function(){
+
+	$('#worldBtn').on('click', function(){
+
+		$('.Country').show();
+		document.getElementById("world").setAttribute("viewBox", continentCoordinates["World"]);
+
+	})
 
 	$('.continentBtn').on('click', function(){
 
@@ -31,6 +40,18 @@ $(function(){
 		$('.Country').hide();
 		$("." + continent).show();
 
+	});
+
+	$('.backgroundBtn').on('click', function(){
+
+		$('#world').css({"backgroundColor": $(this).attr("color").toString()});
+
+	});
+
+	$('.fillBtn').on('click', function(){
+
+		$('#world').css({"fill": $(this).attr("color").toString()});
+		
 	});
 
 
