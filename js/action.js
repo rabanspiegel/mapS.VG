@@ -16,6 +16,9 @@ var continentCoordinates = {
 	"Australia": "791.775 431.591 212.278 214.788"
 };
 
+var currentFill = "#4d4d4d"; 
+var currentBackground = "#ffffff";
+
 
 $(function(){
 
@@ -44,39 +47,52 @@ $(function(){
 
 	$('.backgroundBtn').on('click', function(){
 
-		$('#world').css({"backgroundColor": $(this).attr("color").toString()});
+		var color = $(this).attr("color").toString();
+
+		$('#world').css({"backgroundColor": color});
+		currentBackground = color;
 
 	});
 
 	$('.fillBtn').on('click', function(){
 
-		$('#world').css({"fill": $(this).attr("color").toString()});
-		
+		var color = $(this).attr("color").toString();
+
+		$('#world').css({"fill": color});
+		currentFill = color;
+
 	});
 
-
-	// 	// var x_string = minX.toString();
-	// 	// var y_string = minY.toString();
+	console.log(currentFill);
 
 
-	// 	// var width_string = widthEurope.toString();
-	// 	// var height_string = heightEurope.toString();
+	$('.Country').on('click', function(){
 
+		var color = $(this).css('fill').toString();
+		var colorHex = rgb2hex(color);
 
-	// 	document.getElementById("world").setAttribute("viewBox", "387.104095 175.2494049 332.86166 207.3694305");
+		if (colorHex == '#ff6666'){
+			$(this).css({"fill": currentFill});
+		} else {
+			$(this).css({"fill": "#ff6666"});
+		}
 
-		
-
-	// });
-
-	// $('.Europe').on('click', function(){
-	// 	$(this).css({"fill": "#ff6666"});
-	// });
+	});
 
  //  	// $(".Europe").hide();
  //  	// $("#DE").toggle();
 
 });
+
+var hexDigits = new Array ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
+
+function rgb2hex(rgb) {
+	rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+	return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+function hex(x) {
+	return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+}
 
 // Method to find Min + Max  / Width + Height of Continent
 
