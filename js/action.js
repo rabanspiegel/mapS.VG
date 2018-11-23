@@ -16,8 +16,17 @@ var continentCoordinates = {
 	"Australia": "791.775 431.591 212.278 214.788"
 };
 
+var colors = {
+	'1': "#ffffff",
+	'2': "#bfbfbf",
+	'3': "#4d4d4d",
+	'4': "#000000"
+};
+
 var currentFill = "#4d4d4d"; 
 var currentBackground = "#ffffff";
+var currentStroke;
+var currentMode = '';
 
 
 $(function(){
@@ -63,11 +72,78 @@ $(function(){
 
 	});
 
-	console.log(currentFill);
+	$('.borderBtn').on('click', function(){
 
+		var color = $(this).attr("color").toString();
+
+		$('#world').css({"stroke": color});
+		currentStroke = color;
+	});
+
+	$('.thickBtn').on('click', function(){
+
+		var strokeWidth = $(this).attr('thickness').toString();
+		$('#world').css({'strokeWidth': strokeWidth});
+
+	});
+
+	$('#highlight').on('click', highlight);
+	$('#hide').on('click', hide);
+	$('#none').on('click', noneMode);
+
+
+
+
+	
+
+
+
+
+		// currentMode = $(this).attr('mode').toString();
+
+		// console.log(currentMode);
+
+		// if (currentMode == 'highlight'){
+		// 	console.log('hi');
+		// 	$('.Country').on('click', function(){
+
+		// 		var color = $(this).css('fill').toString();
+		// 		var colorHex = rgb2hex(color);
+
+		// 		if (colorHex == '#ff6666'){
+		// 			$(this).css({"fill": currentFill});
+		// 		} else {
+		// 			$(this).css({"fill": "#ff6666"});
+		// 		}
+		// 	});
+
+		// } else if (currentMode == 'hide'){
+		// 	console.log('hello');
+		// 	$('.Country').on('click', function(){
+		// 		$(this).hide();
+		// 	});
+		// }
+		// }
+
+	
+
+
+
+
+
+
+
+ //  	// $(".Europe").hide();
+ //  	// $("#DE").toggle();
+
+});
+
+function highlight (){
+
+	$('.Country').off();
 
 	$('.Country').on('click', function(){
-
+		
 		var color = $(this).css('fill').toString();
 		var colorHex = rgb2hex(color);
 
@@ -78,11 +154,21 @@ $(function(){
 		}
 
 	});
+}
 
- //  	// $(".Europe").hide();
- //  	// $("#DE").toggle();
+function hide (){
 
-});
+	$('.Country').off();
+	
+	$('.Country').on('click', function(){
+		$(this).hide();
+	});
+	
+}
+
+function noneMode(){
+	$('.Country').off();
+}
 
 var hexDigits = new Array ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
 
@@ -90,6 +176,7 @@ function rgb2hex(rgb) {
 	rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 	return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
+
 function hex(x) {
 	return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
 }
