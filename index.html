@@ -114,7 +114,17 @@
 						</div>
 
 						<div class="btn-group mr-2" role="group">
-							<button type="button" class="btn btn-default" id="highlight">Highlight</button>
+							<div class="dropdown">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="highlight">Highlight</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item highlightBtn" color="#ff0000" href="#">Red</a>
+									<a class="dropdown-item highlightBtn" color="#ff6666" href="#">Light Red</a>
+									<a class="dropdown-item highlightBtn" color="#00cc00" href="#">Green</a>
+									<a class="dropdown-item highlightBtn" color="#99ff99" href="#">Light Green</a>
+									<input class="dropdown-item jscolor" id="highlightInput" value="f2f2f2">
+								</div>
+							</div>
+							
 							<button type="button" class="btn btn-default" id="hide">Hide</button>
 						</div>
 					</div>

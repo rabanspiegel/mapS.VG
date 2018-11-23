@@ -26,6 +26,7 @@ var colors = {
 var currentFill = "#4d4d4d"; 
 var currentBackground = "#ffffff";
 var currentBorder;
+var currentHighlight = "#ff6666";
 
 
 $(function(){
@@ -86,6 +87,13 @@ $(function(){
 
 	});
 
+	$('.highlightBtn').on('click', function(){
+
+		var color = $(this).attr("color").toString();
+		currentHighlight = color;
+
+	});
+
 	$('#highlight').on('click', highlight);
 	$('#hide').on('click', hide);
 	$('#none').on('click', noneMode);
@@ -96,7 +104,7 @@ $(function(){
 
 		$('#world').css({"backgroundColor": color});
 		currentBackground = color;
-	})
+	});
 
 	$('#fillInput').change(function(){
 
@@ -104,7 +112,7 @@ $(function(){
 		
 		$('#world').css({"fill": color});
 		currentFill = color;
-	})
+	});
 
 	$('#borderInput').change(function(){
 
@@ -112,7 +120,16 @@ $(function(){
 		
 		$('#world').css({"stroke": color});
 		currentBorder = color;
-	})
+	});
+
+	$('#highlightInput').change(function(){
+
+		var color = $("#highlightInput").val();
+		currentHighlight = color;
+
+		console.log("hi");
+
+	});
 
 });
 
@@ -125,10 +142,10 @@ function highlight (){
 		var color = $(this).css('fill').toString();
 		var colorHex = rgb2hex(color);
 
-		if (colorHex == '#ff6666'){
-			$(this).css({"fill": currentFill});
+		if (colorHex != currentHighlight){
+			$(this).css({"fill": currentHighlight});
 		} else {
-			$(this).css({"fill": "#ff6666"});
+			$(this).css({"fill": currentFill});
 		}
 
 	});
