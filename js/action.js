@@ -25,8 +25,7 @@ var colors = {
 
 var currentFill = "#4d4d4d"; 
 var currentBackground = "#ffffff";
-var currentStroke;
-var currentMode = '';
+var currentBorder;
 
 
 $(function(){
@@ -77,7 +76,7 @@ $(function(){
 		var color = $(this).attr("color").toString();
 
 		$('#world').css({"stroke": color});
-		currentStroke = color;
+		currentBorder = color;
 	});
 
 	$('.thickBtn').on('click', function(){
@@ -91,50 +90,29 @@ $(function(){
 	$('#hide').on('click', hide);
 	$('#none').on('click', noneMode);
 
+	$('#backgroundInput').change(function(){
 
+		var color = $("#backgroundInput").val();
 
+		$('#world').css({"backgroundColor": color});
+		currentBackground = color;
+	})
 
-	
+	$('#fillInput').change(function(){
 
+		var color = $("#fillInput").val();
+		
+		$('#world').css({"fill": color});
+		currentFill = color;
+	})
 
+	$('#borderInput').change(function(){
 
-
-		// currentMode = $(this).attr('mode').toString();
-
-		// console.log(currentMode);
-
-		// if (currentMode == 'highlight'){
-		// 	console.log('hi');
-		// 	$('.Country').on('click', function(){
-
-		// 		var color = $(this).css('fill').toString();
-		// 		var colorHex = rgb2hex(color);
-
-		// 		if (colorHex == '#ff6666'){
-		// 			$(this).css({"fill": currentFill});
-		// 		} else {
-		// 			$(this).css({"fill": "#ff6666"});
-		// 		}
-		// 	});
-
-		// } else if (currentMode == 'hide'){
-		// 	console.log('hello');
-		// 	$('.Country').on('click', function(){
-		// 		$(this).hide();
-		// 	});
-		// }
-		// }
-
-	
-
-
-
-
-
-
-
- //  	// $(".Europe").hide();
- //  	// $("#DE").toggle();
+		var color = $("#borderInput").val();
+		
+		$('#world').css({"stroke": color});
+		currentBorder = color;
+	})
 
 });
 
@@ -143,7 +121,7 @@ function highlight (){
 	$('.Country').off();
 
 	$('.Country').on('click', function(){
-		
+
 		var color = $(this).css('fill').toString();
 		var colorHex = rgb2hex(color);
 
