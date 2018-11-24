@@ -3,6 +3,10 @@
 	background-color: #f2f2f2;
 }
 
+.container {
+    align-items: center;
+}
+
 #world {
     fill: #4d4d4d;
     background-color: #ffffff;
