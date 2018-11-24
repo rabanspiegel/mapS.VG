@@ -1,9 +1,3 @@
-
-// Set Footer text
-var innerHTML = "Copyright &copy; " + String(new Date().getFullYear()) + " Mark Werner & Raban Spiegel. <a href='http://github.com/rabanvs'>Code</a>";
-document.getElementById("footer-text").innerHTML = innerHTML;
-
-
 // Dict with coordinates for continents
 
 var continentCoordinates = {
@@ -28,29 +22,40 @@ var currentBackground = "#ffffff";
 var currentBorder;
 var currentHighlight = "#ff6666";
 
-
-import Cropper as 'cropperjs';
-
-const image = document.getElementById('image');
-const cropper = new Cropper(image, {
-  aspectRatio: 16 / 9,
-  crop(event) {
-    console.log(event.detail.x);
-    console.log(event.detail.y);
-    console.log(event.detail.width);
-    console.log(event.detail.height);
-    console.log(event.detail.rotate);
-    console.log(event.detail.scaleX);
-    console.log(event.detail.scaleY);
-  },
-});
-
-
-
-
-
+var svg = document.getElementById("world");
 
 $(function(){
+
+	$(".downloadBtn").on('click', updateDownloadHref);
+
+	function updateDownloadHref() {
+
+		var serializer = new XMLSerializer();
+		var source = serializer.serializeToString(svg);
+
+
+		//add name spaces.
+		if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+		    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+		}
+		if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+		    source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+		}
+
+		//add xml declaration
+		source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+		//convert svg source to URI data scheme.
+		var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+
+		//set url value to a element's href attribute.
+		$("#link").attr("href", url);
+
+		// console.group("Object URL");
+		// console.log( "Text", source);
+		// console.log( "URL", url);
+		// console.groupEnd();
+	}
 
 	$('#worldBtn').on('click', function(){
 
@@ -182,7 +187,8 @@ function hide (){
 	
 }
 
-function noneMode(){
+function noneMode (){
+
 	$('.Country').off();
 }
 
@@ -196,6 +202,10 @@ function rgb2hex(rgb) {
 function hex(x) {
 	return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
 }
+
+// Set Footer text
+var innerHTML = "Copyright &copy; " + String(new Date().getFullYear()) + " Mark Werner & Raban Spiegel. <a href='http://github.com/rabanvs'>Code</a>";
+document.getElementById("footer-text").innerHTML = innerHTML;
 
 // Method to find Min + Max  / Width + Height of Continent
 
