@@ -51,10 +51,6 @@ $(function(){
 		//set url value to a element's href attribute.
 		$("#link").attr("href", url);
 
-		// console.group("Object URL");
-		// console.log( "Text", source);
-		// console.log( "URL", url);
-		// console.groupEnd();
 	}
 
 	$('#worldBtn').on('click', function(){

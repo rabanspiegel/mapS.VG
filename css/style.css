@@ -3,35 +3,11 @@
 	background-color: #f2f2f2;
 }
 
-.container {
-    align-items: center;
-}
-
 #world {
     fill: #4d4d4d;
     background-color: #ffffff;
     stroke: #4d4d4d;
 }
-
-.markuraban{
-	position: relative;
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
-}
-
-.explain{
-	margin-top: 20px
-}
-
-.carousel-item {
-	height: 100px;
-	width: 100px;
-	align-items: center;
-}
-
 
 .page{
     display: table-cell;
