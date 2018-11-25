@@ -37,7 +37,7 @@ $(function(){
 	});
 
 
-	$(".downloadBtn").on('click', updateDownloadHref);
+	$("#download").on('click', updateDownloadHref);
 
 	$('#worldBtn').on('click', function(){
 
@@ -160,7 +160,7 @@ $(function(){
 		var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
 
 		//set url value to a element's href attribute.
-		$("#link").attr("href", url);
+		$('#download').attr("href", url)
 
 	}
 
