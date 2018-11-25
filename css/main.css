@@ -1,0 +1,88 @@
+
+
+
+#world {
+    fill: #4d4d4d;
+    background-color: #ffffff;
+    stroke: #4d4d4d;
+    margin: auto;
+    padding: 0;
+    height: 100%;
+    width: auto;
+    
+
+}
+
+.page-header {
+  text-align: center;
+  padding: 100px;
+  font-family: impact; 
+  background-color: #f2f2f2;
+}
+
+.main {
+  max-height: 500px;
+}
+
+.jumbotron {
+  height: 500px;
+  max-height: 500px;
+  border-radius: 0;
+  overflow: scroll;
+  border: 1px solid #4d4d4d;
+}
+
+.jumbotron.mainRight {
+  display: flex;
+  align-items: center;
+}
+
+.roundGithub {
+  color: grey;
+}
+
+.roundGithub:hover {
+  color: #b3b3b3;
+}
+
+.fa-download {
+  padding-right: 15px;
+}
+
+.contact {
+  padding-top: 10px;
+}
+
+.dropdown-menu{
+  width: 100%;
+}
+
+.selector {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.round {
+  width: 50px;
+  height: 50px;
+}
+
+body {
+  margin: 0;
+}
+
+footer {
+  padding: 50px 0 65px;
+  background-color: #ffb3b3;
+}
+
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+
+footer .copyright {
+  font-size: 14px;
+  margin-bottom: 0;
+  text-align: center;
+}
