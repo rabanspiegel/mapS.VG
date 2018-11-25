@@ -26,10 +26,16 @@ var svg = document.getElementById("world");
 
 $(function(){
 
-	$(".dropdown").click(function() {
-  		$(this).toggleClass("open");
-  		console.log(this);
+	$('.start').hide();
+
+	$('.arrowDown').mouseover(function (){
+		$('.start').slideDown(500);
 	});
+
+	$('.arrowDown').mouseleave(function (){
+		$('.start').slideUp(500);
+	});
+
 
 	$(".downloadBtn").on('click', updateDownloadHref);
 

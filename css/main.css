@@ -15,13 +15,20 @@
 
 .page-header {
   text-align: center;
-  padding: 100px;
   font-family: impact; 
   background-color: #f2f2f2;
 }
 
+.page-header #header {
+  padding: 100px;
+}
+
+.page-header #headerContent {
+  padding-bottom: 50px;
+}
+
 .main {
-  max-height: 500px;
+  min-height: 100vh;
 }
 
 .jumbotron {
@@ -35,6 +42,22 @@
 .jumbotron.mainRight {
   display: flex;
   align-items: center;
+}
+
+.arrowDown a {
+  text-decoration: none;
+}
+
+/*.start {
+  visibility: hidden;
+}*/
+
+/*.arrowDown:hover .start {
+  visibility: visible;
+}*/
+
+.arrowDown:hover{
+  color: grey;
 }
 
 .roundGithub {
@@ -67,8 +90,9 @@
   height: 50px;
 }
 
-body {
+html, body {
   margin: 0;
+  height: 100%;
 }
 
 footer {
